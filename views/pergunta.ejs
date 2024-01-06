@@ -1,0 +1,30 @@
+<%- include ('partials/head') %>
+<body>
+    <%- include ('partials/navbar')%>
+    <div class="container">
+        <hr>
+        <h1><%= pergunta.title %></h1>
+        <p><%= pergunta.description %></p>
+        <hr>
+        <form action="/pergunta" method="POST">
+            <h3>Escreva sua resposta</h3>
+            <textarea placeholder="Digite sua resposta" class="form-control" name="corpo"></textarea>
+            <input type="hidden" name="respostaid" value="<%- pergunta.id %>">
+            <br>
+            <button class="btn btn-dark">Enviar</button>
+        </form>
+        <hr>
+        <h3>Respostas</h3>
+        <hr>
+        <% respostas.forEach(resposta => { %>
+            <div class="card">
+                <div class="card-body">
+                    <p><%= resposta.corpo %></p>
+                </div>
+            </div>
+        <%}) %>
+    </div>
+    
+
+</body>
+<%- include ('partials/footer') %>
